@@ -10,9 +10,10 @@ const companyMemberRecord= mongoose.model('companyMembers',{        //education 
         type: Date,
         default: Date.now,
     },
-    employer:{
+    companyId:{
         type:mongoose.Schema.Types.ObjectId,
-        requied:true
+        requied:true,
+        unique: false,
     }
 })
 

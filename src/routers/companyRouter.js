@@ -4,7 +4,7 @@ const router = new express.Router();
 
 router.post("/companyAdd", async (req, res) => {
   const company = new companyRecord(req.body);
-
+  console.log(req.body)
   try {
     await company.save();
 
@@ -31,7 +31,7 @@ router.delete("/companyDelete/:id", async (req, res) => {
 router.put("/companyEdit/:id", async (req, res) => {
   const updates = Object.keys(req.body);
 
-  const allowUpdates = ["name"];
+  const allowUpdates = ["name","createddate"];
 
   const isValidOperation = updates.every((update) => {
     return allowUpdates.includes(update);
@@ -57,5 +57,24 @@ router.put("/companyEdit/:id", async (req, res) => {
     res.status(400).send(e);
   }
 });
+router.get('/companyRecord',async(req,res)=>{          
+  console.log("get all")
+
+     try{
+         console.log("here")
+         
+          const companyRec=await companyRecord.find({})
+       
+           if(!companyRec)    
+           {
+               return res.status(404).send("No record found")
+           }
+         res.send(companyRec)
+     }
+     catch(e)
+     {
+         res.status(500).send(e)
+     }
+ })
 
 module.exports = router;

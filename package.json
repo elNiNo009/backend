@@ -6,16 +6,17 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "env-cmd -f ./config/dev.env nodemon src/server.js",
-    "test":  "env-cmd -f ./config/test.env jest --watch --runInBand ",
-    "coverage":"jest --collect-coverage"
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand ",
+    "coverage": "jest --collect-coverage"
   },
-  "jest":{
-    "testEnvironment":"node"
-   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.5.0",
